@@ -95,3 +95,28 @@ document.getElementById("botonPegar").addEventListener("click", function () {
       console.error("Error al pegar texto: ", error);
     });
 });
+
+//limpiar pagina
+
+document.getElementById("icon").addEventListener("click", function () {
+  let textoLabel = document.getElementById("labelEncriptado");
+  textoLabel.textContent = "";
+  let textoEncriptado = document.getElementById("encriptarTexto");
+  textoEncriptado.value = "";
+  let botonCopiar = document.getElementById("botonCopiar");
+  botonCopiar.style.visibility = "hidden";
+  let imagenLabel = document.getElementById("spanBorrar");
+  imagenLabel.style.visibility = "visible";
+});
+
+//mensaje emergente
+
+function showTemporaryMessage() {
+  var message = document.getElementById("textoTemporal");
+  message.style.display = "block";
+  setTimeout(function () {
+    message.style.display = "none";
+  }, 5000);
+}
+
+showTemporaryMessage();

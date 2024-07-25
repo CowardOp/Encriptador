@@ -35,13 +35,33 @@ body {
 /* Head */
 
 .header {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
   position: absolute;
-  width: 10%;
+  width: 50%;
   padding: 3% 0 0 6%;
 }
 
 .header__icono {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
   font-size: 4rem;
+  z-index: 3;
+}
+
+.texto-temporal {
+  display: none;
+  font-family: var(--fuente-teko);
+  font-size: 2rem;
+  background-color: #f0f8ff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  margin: 0;
+  color: #000;
+  animation: cambiarColor 1s infinite alternate;
 }
 
 /* contenedor */
