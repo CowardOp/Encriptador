@@ -85,16 +85,13 @@ document.getElementById("botonCopiar").addEventListener("click", function () {
 
 //Evento boton pegar
 document.getElementById("botonPegar").addEventListener("click", function () {
-  // Utiliza la API del portapapeles para leer el texto
   navigator.clipboard
     .readText()
     .then(function (text) {
-      // Establece el contenido del textarea al texto leído
       document.getElementById("encriptarTexto").value = text;
       console.log("Texto pegado en el textarea: " + text);
     })
     .catch(function (error) {
-      // Maneja cualquier error que pueda ocurrir
       console.error("Error al pegar texto: ", error);
     });
 });
