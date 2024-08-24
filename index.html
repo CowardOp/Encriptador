@@ -1,66 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js",
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-5XLF9B2G");
-    </script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Encriptador</title>
-    <!-- Hojas de Estilo -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/reset.css" />
-    <!-- Icono -->
     <link rel="icon" href="src/encriptar.png" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
     />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-L2L60P7S41"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-L2L60P7S41");
-    </script>
-    <!--End Google tag (gtag.js) -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5XLF9B2G"
-        height="0"
-        width="0"
-        style="display: block; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <button id="cambioColor" class="cambio-color">
+      <i class="fa-regular fa-toggle-large-off"></i>
+      <i class="fa-regular fa-toggle-large-on"></i>
+    </button>
     <header class="header">
       <nav class="header__menu">
         <button id="icon" class="header__icono">
-          <i class="fa-solid fa-b"></i>
+          <div id="logos" class="logos">
+            <img src="./src/logo-negro.png" alt="logo" class="logo-negro" />
+            <img src="./src/logo-blanco.png" alt="logo" class="logo-blanco" />
+          </div>
         </button>
         <span id="textoTemporal" class="texto-temporal">
           Si presionas el Icono podrás limpiar todo
@@ -75,20 +36,20 @@
             class="contenedor__texto__input"
             placeholder="Ingrese su texto aqui"
           ></textarea>
-          <label class="contenedor__advertencia"
+          <label id="contenedorAdv" class="contenedor__advertencia"
             ><i class="fa-solid fa-circle-exclamation"></i>Ingresar texto en
             minúsculas y sin acentos</label
           >
           <div class="contenedor__botones">
             <input
               id="botonEncriptar"
-              class="contenedor__botones__input uno"
+              class="bonton_encriptar"
               type="button"
               value="Encriptar"
             />
             <input
               id="botonDesencriptar"
-              class="contenedor__botones__input dos"
+              class="boton_desencriptar"
               type="button"
               value="Desencriptar"
             />
@@ -97,14 +58,14 @@
             </button>
           </div>
         </div>
-        <div class="contenedor__encriptado">
+        <div id="contenedorEncriptado" class="contenedor__encriptado">
           <label
             class="contenedor__encriptado__label"
             id="labelEncriptado"
           ></label>
           <span id="spanBorrar" class="contenedor__encriptado__span">
-            <img src="src/Muñeco.png" alt="" />
-            <div class="contenedor__encriptado__mensajes">
+            <img src="src/muñeco.png" alt="" />
+            <div id="mensajesSpan" class="contenedor__encriptado__mensajes">
               <h2 class="mensaje__uno">Ningún mensaje fue encontrado</h2>
               <p class="mensaje__dos">
                 Ingresa el texto que desees encriptar o desencriptar.

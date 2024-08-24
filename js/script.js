@@ -107,6 +107,8 @@ document.getElementById("icon").addEventListener("click", function () {
   botonCopiar.style.visibility = "hidden";
   let imagenLabel = document.getElementById("spanBorrar");
   imagenLabel.style.visibility = "visible";
+  let colorImagen = document.getElementById("contenedorEncriptado");
+  colorImagen.classList.add("color-blanco");
 });
 
 //mensaje emergente
@@ -116,7 +118,27 @@ function showTemporaryMessage() {
   message.style.display = "block";
   setTimeout(function () {
     message.style.display = "none";
-  }, 5000);
+  }, 3000);
 }
 
 showTemporaryMessage();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("cambioColor");
+
+  button.addEventListener("click", () => {
+    button.classList.toggle("on");
+    document.body.classList.toggle("on");
+    document.getElementById("logos").classList.toggle("on");
+    document.getElementById("logos").classList.toggle("off");
+    document.getElementById("encriptarTexto").classList.toggle("on");
+    document.getElementById("contenedorAdv").classList.toggle("on");
+    document.getElementById("botonEncriptar").classList.toggle("on");
+    document.getElementById("botonDesencriptar").classList.toggle("on");
+    document.getElementById("botonPegar").classList.toggle("on");
+    document.getElementById("contenedorEncriptado").classList.toggle("on");
+    document.getElementById("spanBorrar").classList.toggle("on");
+    document.getElementById("mensajesSpan").classList.toggle("on");
+    document.getElementById("botonCopiar").classList.toggle("on");
+  });
+});
