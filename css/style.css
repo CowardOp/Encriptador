@@ -29,7 +29,7 @@
   padding: 0;
   color: var(--color-cuaternario);
   transition: color 1s ease;
-  transition: background-color 0.3s linear;
+  transition: background-color 0.2s linear;
 }
 
 body.off {
@@ -55,7 +55,6 @@ body.on {
 .fa-toggle-large-off,
 .fa-toggle-large-on {
   position: absolute;
-  transition: all 0.3s ease;
 }
 .fa-toggle-large-on {
   opacity: 0;
@@ -209,7 +208,7 @@ body.on {
   gap: 24px;
 }
 
-.bonton_encriptar,
+.boton_encriptar,
 .boton_desencriptar {
   padding: 1.5% 0;
   font-family: var(--fuente-teko);
@@ -219,23 +218,14 @@ body.on {
   border-radius: 24px;
 }
 
-.boton__tres:hover {
-  background-color: transparent;
-  border: 1px solid var(--color-terciario);
-}
-
-.boton__tres:hover i {
-  color: #010926;
-}
-
-.bonton_encriptar {
+.boton_encriptar {
   background-color: var(--color-terciario);
   color: var(--color-secundario);
   border: 1px solid var(--color-secundario);
   transition: all 0.2s ease;
 }
 
-.bonton_encriptar.on {
+.boton_encriptar.on {
   background-color: var(--color-quinto);
   color: var(--color-cuaternario);
   border: 1px solid var(--color-quinto);
@@ -254,50 +244,78 @@ body.on {
   transition: all 0.2s ease;
 }
 
-.boton__tres {
-  padding: 1.5% 0;
-  width: 50px;
-  background-color: var(--color-terciario);
-  border: 1px solid var(--color-secundario);
-  border-radius: 24px;
-}
-.boton__tres.on {
-  background-color: var(--color-quinto);
-  border: 1px solid var(--color-quinto);
-}
-
-.boton__tres i {
-  color: var(--color-secundario);
-}
-
-.bonton_encriptar:hover {
+.boton_encriptar:hover {
+  transform: scale(1.1);
   background-color: transparent;
   color: #000;
   border: 1px solid var(--color-terciario);
 }
 
 .boton_desencriptar:hover {
+  transform: scale(1.1);
   background-color: var(--color-terciario);
   color: var(--color-secundario);
   border: 1px solid var(--color-secundario);
 }
-.bonton_encriptar.on:hover {
+.boton_encriptar.on:hover {
+  transform: scale(1.1);
   background-color: transparent;
   color: var(--color-secundario);
   border: 1px solid var(--color-quinto);
 }
 
 .boton_desencriptar.on:hover {
+  transform: scale(1.1);
   background-color: var(--color-quinto);
   color: var(--color-secundario);
   border: 1px solid var(--color-quinto);
+}
+.boton__pegar {
+  padding: 1.5% 0;
+  width: 50px;
+  background-color: var(--color-terciario);
+  border: 1px solid var(--color-secundario);
+  border-radius: 24px;
+}
+.boton__pegar.on {
+  background-color: var(--color-quinto);
+  border: 1px solid var(--color-quinto);
+}
+
+.boton__pegar i {
+  color: var(--color-secundario);
+}
+
+.boton__pegar:hover {
+  transform: scale(1.1);
+  background-color: transparent;
+  border: 1px solid var(--color-quinto);
+}
+
+.boton__pegar:hover i {
+  color: #010926;
+}
+
+.boton__pegar.on:hover i {
+  color: var(--color-primario);
+}
+
+.boton_encriptar,
+.boton_desencriptar,
+.boton__pegar,
+.boton_desencriptar.on,
+.boton_encriptar.on,
+.boton__pegar.on,
+.boton__pegar i,
+.boton__pegar.on i {
+  transition: all 0.3s ease;
 }
 
 .contenedor__encriptado {
   display: flex;
   flex-direction: column;
   margin: 2% 0 0 0;
-  background-color: var(--color-secundario);
+  background-color: var(--color-primario);
   min-width: 200px;
   width: 20%;
   height: 800px;
