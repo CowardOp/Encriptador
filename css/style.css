@@ -1,425 +1,348 @@
-/* ──────────────── FONTS ──────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dorsa&family=Lexend+Deca:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap");
 
-/* ──────────────── VARIABLES ──────────────── */
 :root {
-  --color-primario: #f3f5fc;
-  --color-secundario: #ffffff;
-  --color-terciario: #f57738;
-  --color-cuaternario: #010926;
-  --color-quinto: #55679c;
-  --color-sexto: #7c93c3;
-  --color-septimo: #31363f;
-
-  --fuente-teko: "Teko", sans-serif;
-}
-
-/* ──────────────── RESETEO ──────────────── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: var(--color-cuaternario);
-  transition: color 0.3s ease, background-color 0.3s ease;
+  --black: #021526;
+  --blue: #6482ad;
+  --beige: #e2dad6;
+  --white: #f5eded;
+  --greem-pastel: #e7f0dc;
+  --sand: #f6f5f2;
+  --green: #75a47f;
+  --purple: #7469b6;
+  --font: "Lexend Deca", sans-serif;
 }
 
 body {
-  background-color: var(--color-primario);
-  font-family: var(--fuente-teko);
+  background-image: url(../src/fondo-pokemon.jpg);
+  background-color: var(--white);
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.4s ease, filter 0.3s ease;
+}
+
+main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-body.on {
-  background-color: var(--color-cuaternario);
-  color: var(--color-secundario);
-}
-
-/* ──────────────── BOTÓN CAMBIO COLOR ──────────────── */
-.cambio-color {
-  display: inline-flex;
-  background: none;
-  border: none;
-  font-size: 2.5em;
-  position: fixed;
-  right: 20px;
-  top: 15px;
-  cursor: pointer;
-  z-index: 10;
-}
-.fa-toggle-large-on,
-.fa-toggle-large-off {
-  position: absolute;
-  transition: opacity 0.3s ease;
-}
-.fa-toggle-large-on {
-  opacity: 0;
-}
-.cambio-color.on .fa-toggle-large-on {
-  opacity: 1;
-  color: var(--color-terciario);
-}
-
-/* ──────────────── HEADER ──────────────── */
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 40px;
-  width: 100%;
-  padding: 2% 5%;
-  justify-content: flex-start;
-  position: relative;
-}
-
-.header__menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.header__icono {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.logos {
-  position: relative;
-  width: 6rem;
-  height: 6rem;
-  transform: rotateY(180deg);
-  perspective: 600px;
-}
-
-.logos img {
-  position: absolute;
-  width: 100%;
-  transition: all 0.6s ease;
-}
-.logos .logo-blanco {
-  opacity: 0;
-}
-.logos.on .logo-blanco {
-  opacity: 1;
-  transform: rotateY(360deg);
-}
-.logos.off .logo-negro {
-  transform: rotateY(180deg);
-}
-
-/* ──────────────── CONTENEDOR GENERAL ──────────────── */
-.contenedor {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 150px;
-  width: 100%;
-  padding: 5% 5% 10%;
-}
-
-/* ──────────────── TEXT AREA Y BOTONES ──────────────── */
-.contenedor__texto {
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contenedor__texto__input {
-  width: 100%;
-  height: 550px;
-  background: transparent;
-  border: none;
-  resize: none;
-  outline: none;
-  font-size: 2.2rem;
-  font-weight: 300;
-  color: var(--color-cuaternario);
-}
-.contenedor__texto__input.on {
-  color: var(--color-secundario);
-}
-.contenedor__texto__input::placeholder {
-  color: var(--color-terciario);
-}
-.contenedor__texto__input.on::placeholder {
-  color: var(--color-sexto);
-}
-
-/* ADVERTENCIA */
-.contenedor__advertencia {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.2rem;
-}
-.contenedor__advertencia.on {
-  color: var(--color-secundario);
-}
-.contenedor__advertencia i {
-  color: #ff4444;
-}
-
-/* BOTONES */
-.contenedor__botones {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-}
-
-.boton_encriptar,
-.boton_desencriptar,
-.boton__pegar {
-  font-family: var(--fuente-teko);
-  font-size: 1.5rem;
-  padding: 12px 24px;
-  border-radius: 24px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.boton_encriptar {
-  background-color: var(--color-terciario);
-  color: var(--color-secundario);
-}
-.boton_encriptar:hover {
-  background-color: transparent;
-  border-color: var(--color-terciario);
-  color: var(--color-cuaternario);
-}
-.boton_encriptar.on {
-  background-color: var(--color-quinto);
-  color: var(--color-cuaternario);
-}
-.boton_encriptar.on:hover {
-  background-color: transparent;
-  border-color: var(--color-quinto);
-  color: var(--color-secundario);
-}
-
-.boton_desencriptar {
-  background: transparent;
-  border: 1px solid var(--color-terciario);
-  color: var(--color-terciario);
-}
-.boton_desencriptar:hover {
-  background-color: var(--color-terciario);
-  color: var(--color-secundario);
-}
-.boton_desencriptar.on {
-  border-color: var(--color-quinto);
-  color: var(--color-secundario);
-}
-
-.boton__pegar {
-  background-color: var(--color-terciario);
-  color: var(--color-secundario);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-}
-.boton__pegar:hover {
-  background-color: transparent;
-  border-color: var(--color-quinto);
-  color: var(--color-cuaternario);
-}
-
-/* ──────────────── PANEL DE ENCRIPTADO ──────────────── */
-.contenedor__encriptado {
-  width: 25%;
-  min-width: 280px;
-  height: 700px;
-  border-radius: 24px;
-  background-color: var(--color-primario);
-  padding: 2%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 50px;
+  padding: 20px;
   transition: all 0.4s ease;
 }
 
-.contenedor__encriptado.on {
-  background-color: var(--color-septimo);
-  color: var(--color-secundario);
-}
-
-.contenedor__encriptado__label {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.contenedor__encriptado__span {
-  flex: 1;
+/* ---------- NAVEGADOR ---------- */
+.browser {
+  user-select: none;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-radius: 22px;
-  background: linear-gradient(
-    353deg,
-    rgba(230, 130, 59, 1) 0%,
-    rgba(230, 130, 59, 1) 20%,
-    rgba(193, 85, 31, 1) 65%
-  );
-  padding: 20px;
-}
-.contenedor__encriptado__span.on {
-  background: linear-gradient(
-    353deg,
-    rgba(124, 147, 195, 1) 0%,
-    rgba(124, 147, 195, 1) 20%,
-    rgba(85, 103, 156, 1) 65%
-  );
-}
-
-.contenedor__encriptado__mensajes {
-  text-align: center;
-}
-.mensaje__uno {
-  font-size: 1.75rem;
-  font-weight: 700;
-  animation: cambiarColor 1s infinite alternate;
-}
-.mensaje__dos {
-  font-size: 1.2rem;
-  font-weight: 300;
-  animation: cambiarColor 1s infinite alternate;
-}
-
-/* BOTÓN COPIAR */
-.contenedor__encriptado__boton {
-  align-self: center;
-  font-size: 1.4rem;
-  padding: 10px 20px;
-  border: 1px solid var(--color-terciario);
-  color: var(--color-terciario);
-  background: transparent;
-  border-radius: 24px;
-  cursor: pointer;
-  visibility: hidden;
+  margin-top: 5%;
+  gap: 20px;
+  width: 100%;
+  font-family: var(--font);
   transition: all 0.3s ease;
 }
-.contenedor__encriptado__boton:hover {
-  background-color: var(--color-terciario);
-  color: var(--color-secundario);
-}
-.contenedor__encriptado__boton.on {
-  border-color: var(--color-quinto);
-  color: var(--color-sexto);
-}
-.contenedor__encriptado__boton.on:hover {
-  background-color: var(--color-quinto);
-  color: var(--color-secundario);
+
+.title {
+  font-size: 3rem;
+  color: var(--beige);
+  transition: all 0.3s ease;
 }
 
-/* ──────────────── RESPONSIVE DESIGN ──────────────── */
+.browser_input {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  max-width: 600px;
+}
 
-/* Tablets horizontales / pantallas medianas */
+.pokemon_name {
+  padding: 5px 5px;
+  width: 70%;
+  font-family: var(--font);
+  font-size: 2rem;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border: 1.5px solid var(--blue);
+  border-right: none;
+  transition: all 0.3s ease;
+}
+.pokemon_name:focus {
+  outline: none;
+}
+
+.button_browser {
+  color: var(--white);
+  width: 52px;
+  background-color: var(--blue);
+  font-size: 1.5rem;
+  border: 1.5px solid var(--blue);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  transition: all 0.5s ease;
+}
+
+.button_browser:hover {
+  background-color: var(--purple);
+  transform: scale(1.1);
+}
+
+/* ---------- INFO ---------- */
+.title_enunciado {
+  font-size: 1.3rem;
+  color: var(--beige);
+  transition: color 0.3s ease;
+}
+
+.pokemon_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 450px;
+  background-color: transparent;
+  font-family: var(--font);
+  text-align: center;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.pokemon_info h2 {
+  width: 100%;
+  padding: 5px 0;
+  background-color: var(--greem-pastel);
+  font-size: 2rem;
+  border-bottom: 3px solid var(--sand);
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  z-index: 2;
+}
+
+.pokemon_info img {
+  margin: 15px 0;
+  width: 250px;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.pokemon_info img:hover {
+  transform: scale(1.1);
+}
+
+.pokemon_info p {
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.pokemon_info_card {
+  visibility: hidden;
+  width: 260px;
+  height: 250px;
+  margin-top: 55px;
+  margin-left: 45px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  z-index: 1;
+}
+
+/* ---------- RESPONSIVIDAD + ANIMACIONES ---------- */
+
+/* --- Tablets medianas y pantallas pequeñas --- */
 @media screen and (max-width: 1024px) {
-  .contenedor {
-    gap: 80px;
+  .title {
+    font-size: 2.5rem;
   }
-  .contenedor__texto {
-    width: 45%;
+
+  .pokemon_info {
+    width: 300px;
+    height: 400px;
   }
-  .contenedor__encriptado {
-    width: 35%;
+
+  .pokemon_info img {
+    width: 200px;
   }
 }
 
-/* Tablets verticales / Laptops pequeñas */
-@media screen and (max-width: 865px) {
-  .contenedor {
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
-  }
-  .contenedor__texto,
-  .contenedor__encriptado {
-    width: 90%;
-  }
-  .contenedor__texto__input {
-    height: 350px;
-  }
-  img {
-    display: none;
-  }
-}
-
-/* Móviles grandes */
-@media screen and (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+/* --- Tablets verticales y móviles grandes --- */
+@media screen and (max-width: 768px) {
+  main {
+    gap: 30px;
   }
 
-  .cambio-color {
-    font-size: 2em;
-    right: 10px;
+  .title {
+    font-size: 2rem;
   }
 
-  .contenedor {
-    gap: 40px;
-  }
-
-  .contenedor__botones {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .boton_encriptar,
-  .boton_desencriptar,
-  .boton__pegar {
-    width: 90%;
+  .pokemon_name {
+    width: 75%;
     font-size: 1.3rem;
   }
 
-  .contenedor__encriptado {
+  .button_browser {
+    width: 45px;
+    font-size: 1.2rem;
+  }
+
+  .pokemon_info {
+    width: 280px;
     height: auto;
-    padding: 20px;
+  }
+
+  .pokemon_info h2 {
+    font-size: 1.6rem;
+  }
+
+  .pokemon_info p {
+    font-size: 1.1rem;
   }
 }
 
-/* Teléfonos pequeños */
-@media screen and (max-width: 400px) {
-  .contenedor__texto__input {
+/* --- Celulares --- */
+@media screen and (max-width: 480px) {
+  /* Reacomodo fluido */
+  main {
+    transform: translateY(-20px);
+    animation: moverContenedor 0.5s ease forwards;
+  }
+
+  @keyframes moverContenedor {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .browser {
+    margin-top: 10%;
+    animation: aparecerTexto 0.6s ease forwards;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .title_enunciado {
+    font-size: 1rem;
+  }
+
+  .browser_input {
+    flex-direction: column;
+    align-items: center;
+    animation: aparecerBotones 0.8s ease forwards;
+  }
+
+  .pokemon_name {
+    width: 90%;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border-right: 1.5px solid var(--blue);
+    margin-bottom: 10px;
+  }
+
+  .button_browser {
+    width: 90%;
+    border-radius: 12px;
+    font-size: 1.2rem;
+  }
+
+  .pokemon_info {
+    width: 90%;
+    height: auto;
+    animation: aparecerPanel 1s ease forwards;
+  }
+
+  .pokemon_info img {
+    width: 180px;
+  }
+
+  .pokemon_info_card {
+    width: 80%;
+    height: 200px;
+    margin: 0;
+  }
+
+  @keyframes aparecerTexto {
+    from {
+      transform: translateX(-40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes aparecerBotones {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes aparecerPanel {
+    from {
+      transform: translateX(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* --- Pantallas muy pequeñas --- */
+@media screen and (max-width: 365px) {
+  .title {
     font-size: 1.5rem;
-    height: 300px;
   }
-  .contenedor__encriptado {
-    width: 95%;
+
+  .pokemon_name {
+    font-size: 1rem;
   }
-  .mensaje__uno {
-    font-size: 1.4rem;
+
+  .pokemon_info img {
+    width: 150px;
   }
-  .mensaje__dos {
+
+  .pokemon_info h2 {
+    font-size: 1.3rem;
+  }
+
+  .pokemon_info p {
     font-size: 1rem;
   }
 }
 
-/* ──────────────── ANIMACIONES ──────────────── */
-@keyframes cambiarColor {
-  from {
-    color: black;
-  }
-  to {
-    color: var(--color-quinto);
-  }
+/* ---------- EFECTO CAMBIO MODO OSCURO ---------- */
+body.modo-oscuro {
+  background-color: var(--black);
+  filter: brightness(0.9);
+  animation: cambioModo 0.4s ease-in-out;
 }
-@keyframes cambiarColorSwitch {
-  from {
-    color: black;
+
+@keyframes cambioModo {
+  0% {
+    transform: scale(1.03);
+    opacity: 0.8;
   }
-  to {
-    color: var(--color-terciario);
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
