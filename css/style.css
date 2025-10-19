@@ -1,15 +1,7 @@
-/* fonts */
+/* ──────────────── FONTS ──────────────── */
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap");
-/* 
-.teko-<uniquifier> {
-  font-family: "Teko", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-}
-*/
-/* root */
 
+/* ──────────────── VARIABLES ──────────────── */
 :root {
   --color-primario: #f3f5fc;
   --color-secundario: #ffffff;
@@ -22,86 +14,92 @@
   --fuente-teko: "Teko", sans-serif;
 }
 
-/* reset */
-
+/* ──────────────── RESETEO ──────────────── */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   color: var(--color-cuaternario);
-  transition: color 1s ease;
-  transition: background-color 0.2s linear;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-body.off {
-  background-color: #f3f5fc;
-  box-sizing: border-box;
+body {
+  background-color: var(--color-primario);
+  font-family: var(--fuente-teko);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 body.on {
   background-color: var(--color-cuaternario);
-  box-sizing: border-box;
+  color: var(--color-secundario);
 }
 
+/* ──────────────── BOTÓN CAMBIO COLOR ──────────────── */
 .cambio-color {
   display: inline-flex;
   background: none;
   border: none;
   font-size: 2.5em;
   position: fixed;
-  right: 50px;
-  margin-top: 10px;
-  margin-right: 10px;
+  right: 20px;
+  top: 15px;
   cursor: pointer;
+  z-index: 10;
 }
-.fa-toggle-large-off,
-.fa-toggle-large-on {
+.fa-toggle-large-on,
+.fa-toggle-large-off {
   position: absolute;
+  transition: opacity 0.3s ease;
 }
 .fa-toggle-large-on {
   opacity: 0;
 }
-
 .cambio-color.on .fa-toggle-large-on {
   opacity: 1;
   color: var(--color-terciario);
 }
 
-/* Head */
-
+/* ──────────────── HEADER ──────────────── */
 .header {
   display: flex;
   flex-direction: row;
-  gap: 80px;
-  position: absolute;
-  width: 50%;
-  padding: 3% 0 0 6%;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  padding: 2% 5%;
+  justify-content: flex-start;
+  position: relative;
 }
 
 .header__menu {
-  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .header__icono {
-  cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
-  z-index: 3;
+  cursor: pointer;
 }
 
 .logos {
-  transform: rotateY(180deg);
+  position: relative;
   width: 6rem;
   height: 6rem;
+  transform: rotateY(180deg);
+  perspective: 600px;
 }
 
 .logos img {
-  left: 0;
-  width: 6rem;
   position: absolute;
-  transition: all 0.5s ease;
+  width: 100%;
+  transition: all 0.6s ease;
 }
-
 .logos .logo-blanco {
   opacity: 0;
 }
@@ -109,66 +107,42 @@ body.on {
   opacity: 1;
   transform: rotateY(360deg);
 }
-
 .logos.off .logo-negro {
   transform: rotateY(180deg);
 }
-.texto-temporal {
-  display: none;
-  margin-top: 10px;
-  font-family: var(--fuente-teko);
-  font-size: 2rem;
-  background-color: #f0f8ff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  padding: 0 5px 0 5px;
-  margin: 0;
-  color: #000;
-  animation: cambiarColorSwitch 1s infinite alternate;
-}
 
-/* contenedor */
-
+/* ──────────────── CONTENEDOR GENERAL ──────────────── */
 .contenedor {
   display: flex;
-  gap: 183px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 150px;
+  width: 100%;
+  padding: 5% 5% 10%;
 }
 
+/* ──────────────── TEXT AREA Y BOTONES ──────────────── */
 .contenedor__texto {
-  padding: 10% 0 0 15%;
-  width: 30%;
-  height: 550px;
-
-  background-color: transparent;
-  border-radius: 5px;
-  border: none;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .contenedor__texto__input {
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 2.5rem;
-  color: var(--color-cuaternario);
-  border: none;
-  background-color: transparent;
   width: 100%;
   height: 550px;
-  outline: none;
+  background: transparent;
+  border: none;
   resize: none;
+  outline: none;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-cuaternario);
 }
 .contenedor__texto__input.on {
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 2.5rem;
   color: var(--color-secundario);
-  border: none;
-  background-color: transparent;
-  width: 100%;
-  height: 550px;
-  outline: none;
-  resize: none;
 }
-
 .contenedor__texto__input::placeholder {
   color: var(--color-terciario);
 }
@@ -176,186 +150,127 @@ body.on {
   color: var(--color-sexto);
 }
 
+/* ADVERTENCIA */
 .contenedor__advertencia {
-  padding: 1%;
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 1.25rem;
-  color: var(--color-cuaternario);
-  transition: color 0.5 linear;
+  gap: 8px;
+  font-size: 1.2rem;
 }
 .contenedor__advertencia.on {
-  padding: 1%;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 1.25rem;
   color: var(--color-secundario);
 }
 .contenedor__advertencia i {
-  color: #f00;
-  font-size: 1rem;
+  color: #ff4444;
 }
 
+/* BOTONES */
 .contenedor__botones {
   display: flex;
-  width: 100%;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
 }
 
 .boton_encriptar,
-.boton_desencriptar {
-  padding: 1.5% 0;
+.boton_desencriptar,
+.boton__pegar {
   font-family: var(--fuente-teko);
-  font-weight: 300;
   font-size: 1.5rem;
-  width: 278px;
+  padding: 12px 24px;
   border-radius: 24px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .boton_encriptar {
   background-color: var(--color-terciario);
   color: var(--color-secundario);
-  border: 1px solid var(--color-secundario);
-  transition: all 0.2s ease;
 }
-
+.boton_encriptar:hover {
+  background-color: transparent;
+  border-color: var(--color-terciario);
+  color: var(--color-cuaternario);
+}
 .boton_encriptar.on {
   background-color: var(--color-quinto);
   color: var(--color-cuaternario);
-  border: 1px solid var(--color-quinto);
-  transition: all 0.2s ease;
-}
-.boton_desencriptar {
-  background-color: transparent;
-  color: var(--color-terciario);
-  border: 1px solid var(--color-terciario);
-  transition: all 0.2s ease;
-}
-.boton_desencriptar.on {
-  background-color: transparent;
-  color: var(--color-secundario);
-  border: 1px solid var(--color-quinto);
-  transition: all 0.2s ease;
-}
-
-.boton_encriptar:hover {
-  transform: scale(1.1);
-  background-color: transparent;
-  color: #000;
-  border: 1px solid var(--color-terciario);
-}
-
-.boton_desencriptar:hover {
-  transform: scale(1.1);
-  background-color: var(--color-terciario);
-  color: var(--color-secundario);
-  border: 1px solid var(--color-secundario);
 }
 .boton_encriptar.on:hover {
-  transform: scale(1.1);
   background-color: transparent;
+  border-color: var(--color-quinto);
   color: var(--color-secundario);
-  border: 1px solid var(--color-quinto);
 }
 
-.boton_desencriptar.on:hover {
-  transform: scale(1.1);
-  background-color: var(--color-quinto);
-  color: var(--color-secundario);
-  border: 1px solid var(--color-quinto);
+.boton_desencriptar {
+  background: transparent;
+  border: 1px solid var(--color-terciario);
+  color: var(--color-terciario);
 }
-.boton__pegar {
-  padding: 1.5% 0;
-  width: 50px;
+.boton_desencriptar:hover {
   background-color: var(--color-terciario);
-  border: 1px solid var(--color-secundario);
-  border-radius: 24px;
+  color: var(--color-secundario);
 }
-.boton__pegar.on {
-  background-color: var(--color-quinto);
-  border: 1px solid var(--color-quinto);
-}
-
-.boton__pegar i {
+.boton_desencriptar.on {
+  border-color: var(--color-quinto);
   color: var(--color-secundario);
 }
 
+.boton__pegar {
+  background-color: var(--color-terciario);
+  color: var(--color-secundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+}
 .boton__pegar:hover {
-  transform: scale(1.1);
   background-color: transparent;
-  border: 1px solid var(--color-quinto);
+  border-color: var(--color-quinto);
+  color: var(--color-cuaternario);
 }
 
-.boton__pegar:hover i {
-  color: #010926;
-}
-
-.boton__pegar.on:hover i {
-  color: var(--color-primario);
-}
-
-.boton_encriptar,
-.boton_desencriptar,
-.boton__pegar,
-.boton_desencriptar.on,
-.boton_encriptar.on,
-.boton__pegar.on,
-.boton__pegar i,
-.boton__pegar.on i {
-  transition: all 0.3s ease;
-}
-
+/* ──────────────── PANEL DE ENCRIPTADO ──────────────── */
 .contenedor__encriptado {
+  width: 25%;
+  min-width: 280px;
+  height: 700px;
+  border-radius: 24px;
+  background-color: var(--color-primario);
+  padding: 2%;
   display: flex;
   flex-direction: column;
-  margin: 2% 0 0 0;
-  background-color: var(--color-primario);
-  min-width: 200px;
-  width: 20%;
-  height: 800px;
-  border-radius: 32px;
-  padding: 2%;
+  justify-content: space-between;
+  transition: all 0.4s ease;
 }
+
 .contenedor__encriptado.on {
-  color: var(--color-secundario);
   background-color: var(--color-septimo);
-}
-.contenedor__encriptado.on .contenedor__encriptado__label {
   color: var(--color-secundario);
 }
 
 .contenedor__encriptado__label {
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 1.75rem;
-  margin: 2%;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
 .contenedor__encriptado__span {
-  width: 100%;
-  height: 95%;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: rgb(230, 130, 59);
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
   background: linear-gradient(
     353deg,
     rgba(230, 130, 59, 1) 0%,
     rgba(230, 130, 59, 1) 20%,
     rgba(193, 85, 31, 1) 65%
   );
-  border-radius: 22px;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
 }
 .contenedor__encriptado__span.on {
-  background: rgb(124, 147, 195);
   background: linear-gradient(
     353deg,
     rgba(124, 147, 195, 1) 0%,
@@ -363,184 +278,135 @@ body.on {
     rgba(85, 103, 156, 1) 65%
   );
 }
+
 .contenedor__encriptado__mensajes {
-  width: 90%;
   text-align: center;
 }
-.contenedor__encriptado__mensajes.on .mensaje__uno,
-.contenedor__encriptado__mensajes.on .mensaje__dos {
-  animation: cambiarColorSwitch 1s infinite alternate;
-}
-
 .mensaje__uno {
-  font-family: var(--fuente-teko);
-  font-weight: 700;
   font-size: 1.75rem;
+  font-weight: 700;
   animation: cambiarColor 1s infinite alternate;
 }
-
 .mensaje__dos {
-  font-family: var(--fuente-teko);
+  font-size: 1.2rem;
   font-weight: 300;
-  font-size: 1.25rem;
   animation: cambiarColor 1s infinite alternate;
 }
 
+/* BOTÓN COPIAR */
 .contenedor__encriptado__boton {
-  display: flex;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-
-  font-family: var(--fuente-teko);
-  font-weight: 300;
-  font-size: 1.5rem;
-
-  padding: 1% 0;
-  margin: 1%;
-
-  background-color: transparent;
-  border-radius: 24px;
+  align-self: center;
+  font-size: 1.4rem;
+  padding: 10px 20px;
   border: 1px solid var(--color-terciario);
   color: var(--color-terciario);
-
+  background: transparent;
+  border-radius: 24px;
+  cursor: pointer;
+  visibility: hidden;
   transition: all 0.3s ease;
-  z-index: 1;
 }
-
-.contenedor__encriptado__boton.on {
-  color: var(--color-sexto);
-  border: 1px solid var(--color-sexto);
-}
-.contenedor__encriptado__boton.on i {
-  color: var(--color-sexto);
-}
-
 .contenedor__encriptado__boton:hover {
-  color: var(--color-secundario);
   background-color: var(--color-terciario);
-  border: 1px solid var(--color-secundario);
-}
-.contenedor__encriptado__boton:hover i {
   color: var(--color-secundario);
 }
-
+.contenedor__encriptado__boton.on {
+  border-color: var(--color-quinto);
+  color: var(--color-sexto);
+}
 .contenedor__encriptado__boton.on:hover {
-  color: var(--color-secundario);
   background-color: var(--color-quinto);
-  border: 1px solid var(--color-quinto);
-}
-.contenedor__encriptado__boton.on:hover i {
   color: var(--color-secundario);
 }
 
-.contenedor__encriptado__span img {
-  width: 100%;
-}
-.contenedor__encriptado__boton i {
-  color: var(--color-terciario);
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
+/* ──────────────── RESPONSIVE DESIGN ──────────────── */
+
+/* Tablets horizontales / pantallas medianas */
+@media screen and (max-width: 1024px) {
+  .contenedor {
+    gap: 80px;
+  }
+  .contenedor__texto {
+    width: 45%;
+  }
+  .contenedor__encriptado {
+    width: 35%;
+  }
 }
 
-.borrar {
-  display: none;
-}
-
-.ajustar {
-  position: relative;
-  width: 100%;
-}
-/*tablet responsiva*/
+/* Tablets verticales / Laptops pequeñas */
 @media screen and (max-width: 865px) {
   .contenedor {
-    display: flex;
     flex-direction: column;
-    gap: 85px;
+    align-items: center;
+    gap: 60px;
   }
-
-  .contenedor__texto {
-    margin: 15% 0 0 5%;
-    padding: 0;
-    width: 90%;
-  }
-
-  .contenedor__botones {
-    width: 90%;
-  }
-
+  .contenedor__texto,
   .contenedor__encriptado {
     width: 90%;
-    height: 200px;
-    padding: 0;
-    margin: 5%;
   }
-
-  .contenedor__encriptado__label {
-    margin: 3%;
-  }
-
-  .contenedor__encriptado__label {
-    margin: 3%;
-  }
-
-  .contenedor__encriptado__boton {
-    width: 20%;
-  }
-
-  img {
-    display: none;
-  }
-}
-/*telefono responsivo */
-@media screen and (max-width: 400px) {
-  main {
-    width: 100%;
-    margin: 0;
-    display: block;
-    justify-content: center;
-  }
-  .contenedor {
-    flex-direction: column;
-    gap: 85px;
-  }
-
-  .contenedor__texto {
-    margin: 20% 0 0 5%;
-    padding: 0;
-  }
-
   .contenedor__texto__input {
-    height: 450px;
+    height: 350px;
   }
-
-  .contenedor__botones {
-    flex-direction: column;
-    width: 90%;
-  }
-
-  .contenedor__encriptado {
-    width: 90%;
-    height: 200px;
-    padding: 0;
-    margin: 5%;
-  }
-
-  .contenedor__encriptado__label {
-    margin: 3%;
-  }
-
-  .contenedor__encriptado__boton {
-    margin: 2%;
-    width: 30%;
-  }
-
   img {
     display: none;
   }
 }
 
+/* Móviles grandes */
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cambio-color {
+    font-size: 2em;
+    right: 10px;
+  }
+
+  .contenedor {
+    gap: 40px;
+  }
+
+  .contenedor__botones {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .boton_encriptar,
+  .boton_desencriptar,
+  .boton__pegar {
+    width: 90%;
+    font-size: 1.3rem;
+  }
+
+  .contenedor__encriptado {
+    height: auto;
+    padding: 20px;
+  }
+}
+
+/* Teléfonos pequeños */
+@media screen and (max-width: 400px) {
+  .contenedor__texto__input {
+    font-size: 1.5rem;
+    height: 300px;
+  }
+  .contenedor__encriptado {
+    width: 95%;
+  }
+  .mensaje__uno {
+    font-size: 1.4rem;
+  }
+  .mensaje__dos {
+    font-size: 1rem;
+  }
+}
+
+/* ──────────────── ANIMACIONES ──────────────── */
 @keyframes cambiarColor {
   from {
     color: black;
